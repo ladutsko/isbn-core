@@ -1,0 +1,14 @@
+<!ELEMENT ISBNRangeMessage (MessageSource?, MessageSerialNumber?, MessageDate, EAN.UCCPrefixes, RegistrationGroups) >
+<!ELEMENT MessageSource (#PCDATA) >
+<!ELEMENT MessageSerialNumber (#PCDATA) >
+<!ELEMENT MessageDate (#PCDATA) >
+<!ELEMENT EAN.UCCPrefixes (EAN.UCC+) >
+<!ELEMENT RegistrationGroups (Group+) >
+<!ELEMENT EAN.UCC (Prefix, Agency, Rules) >
+<!ELEMENT Group (Prefix, Agency, Rules) >
+<!ELEMENT Rules (Rule+) >
+<!ELEMENT Rule (Range, Length) >
+<!ELEMENT Prefix (#PCDATA) >
+<!ELEMENT Agency (#PCDATA) >
+<!ELEMENT Range (#PCDATA) >
+<!ELEMENT Length (#PCDATA) >
