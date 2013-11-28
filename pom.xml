@@ -8,7 +8,7 @@
   <artifactId>isbn-core</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <packaging>jar</packaging>
+  <packaging>bundle</packaging>
 
   <name>ISBN core</name>
   <url>https://github.com/ladutsko/isbn-core</url>
@@ -109,6 +109,17 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Export-Package>com.github.ladutsko.isbn.*,org.isbn.prefix.ranges.model.*</Export-Package>
+          </instructions>
+        </configuration>
       </plugin>
     </plugins>
   </build>
