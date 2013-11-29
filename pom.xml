@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+  
   <groupId>com.github.ladutsko</groupId>
   <artifactId>isbn-core</artifactId>
   <version>1.0.0-SNAPSHOT</version>
@@ -12,6 +16,7 @@
 
   <name>ISBN core</name>
   <url>https://github.com/ladutsko/isbn-core</url>
+  <description>ISBN core tools</description>
 
   <issueManagement>
     <url>https://github.com/ladutsko/isbn-core/issues</url>
@@ -27,7 +32,7 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/ladutsko/isbn-core</url>
+    <url>git@github.com:ladutsko/isbn-core.git</url>
     <connection>scm:git:git@github.com:ladutsko/isbn-core.git</connection>
     <developerConnection>scm:git:git@github.com:ladutsko/isbn-core.git</developerConnection>
   </scm>
@@ -42,11 +47,10 @@
   </developers>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.5</maven.compiler.source>
     <maven.compiler.target>1.5</maven.compiler.target>
   </properties>
-
+  
   <build>
     <resources>
       <resource>
@@ -86,38 +90,13 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.2.1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9.1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
+        <version>2.3.7</version>
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Export-Package>com.github.ladutsko.isbn.*,org.isbn.prefix.ranges.model.*</Export-Package>
+            <Export-Package>{local-packages};version=${project.version};-noimport:=true</Export-Package>
           </instructions>
         </configuration>
       </plugin>
