@@ -16,9 +16,9 @@
 <!ELEMENT Length (#PCDATA) >
 ]>
 <ISBNRangeMessage>
-<MessageSource>International ISBN Agency</MessageSource>
-<MessageSerialNumber>f4618c0a-9486-4237-93e0-9848faabd400</MessageSerialNumber>
-<MessageDate>Thu, 06 Feb 2014 13:16:35 GMT</MessageDate>
+  <MessageSource>International ISBN Agency</MessageSource>
+  <MessageSerialNumber>6da11959-a80e-4a5d-9cf2-ca0ce577571f</MessageSerialNumber>
+  <MessageDate>Thu, 15 May 2014 12:12:06 CEST</MessageDate>
   <EAN.UCCPrefixes>
     <EAN.UCC>
       <Prefix>978</Prefix>
@@ -270,7 +270,7 @@
     </Group>
     <Group>
       <Prefix>978-5</Prefix>
-      <Agency>Russian Federation and former USSR</Agency>
+      <Agency>former U.S.S.R</Agency>
       <Rules>
         <Rule>
           <Range>0000000-0049999</Range>
@@ -538,7 +538,7 @@
         </Rule>
         <Rule>
           <Range>9000000-9999999</Range>
-          <Length>2</Length>
+          <Length>4</Length>
         </Rule>
       </Rules>
     </Group>
@@ -896,7 +896,7 @@
     </Group>
     <Group>
       <Prefix>978-80</Prefix>
-      <Agency>Czech Republic and Slovakia</Agency>
+      <Agency>former Czechoslovakia</Agency>
       <Rules>
         <Rule>
           <Range>0000000-1999999</Range>
@@ -1092,7 +1092,7 @@
     </Group>
     <Group>
       <Prefix>978-86</Prefix>
-      <Agency>Serbia (shared)</Agency>
+      <Agency>former Yugoslavia</Agency>
       <Rules>
         <Rule>
           <Range>0000000-2999999</Range>
@@ -1583,8 +1583,12 @@
           <Length>5</Length>
         </Rule>
         <Rule>
-          <Range>5500000-7999999</Range>
+          <Range>5500000-7499999</Range>
           <Length>3</Length>
+        </Rule>
+        <Rule>
+          <Range>7500000-7999999</Range>
+          <Length>4</Length>
         </Rule>
         <Rule>
           <Range>8000000-9499999</Range>
@@ -3355,8 +3359,12 @@
       <Agency>Bosnia and Herzegovina</Agency>
       <Rules>
         <Rule>
-          <Range>0000000-0399999</Range>
+          <Range>0000000-0299999</Range>
           <Length>2</Length>
+        </Rule>
+        <Rule>
+          <Range>0300000-0399999</Range>
+          <Length>4</Length>
         </Rule>
         <Rule>
           <Range>0400000-0899999</Range>
@@ -4156,7 +4164,7 @@
     </Group>
     <Group>
       <Prefix>978-99904</Prefix>
-      <Agency>Netherlands Antilles and Aruba</Agency>
+      <Agency>Curaçao</Agency>
       <Rules>
         <Rule>
           <Range>0000000-5999999</Range>
@@ -5513,6 +5521,28 @@
         <Rule>
           <Range>8000000-9999999</Range>
           <Length>3</Length>
+        </Rule>
+      </Rules>
+    </Group>
+    <Group>
+      <Prefix>978-99976</Prefix>
+      <Agency>Srpska, Republic of</Agency>
+      <Rules>
+        <Rule>
+          <Range>0000000-1999999</Range>
+          <Length>1</Length>
+        </Rule>
+        <Rule>
+          <Range>2000000-5999999</Range>
+          <Length>2</Length>
+        </Rule>
+        <Rule>
+          <Range>6000000-7999999</Range>
+          <Length>3</Length>
+        </Rule>
+        <Rule>
+          <Range>8000000-9999999</Range>
+          <Length>0</Length>
         </Rule>
       </Rules>
     </Group>
