@@ -10,7 +10,7 @@
   
   <groupId>com.github.ladutsko</groupId>
   <artifactId>isbn-core</artifactId>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>1.0.5</version>
 
   <packaging>bundle</packaging>
 
