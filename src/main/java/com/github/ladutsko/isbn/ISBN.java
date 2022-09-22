@@ -162,9 +162,9 @@ public class ISBN implements Serializable {
     }
 
     if (null != m.group(2)) {
-      String isbn10 = normalize(m.group());
+      String isbn10 = normalize(m.group()).toUpperCase();
       char checkDigit = calculateCheckDigit10(isbn10);
-      if (checkDigit != Character.toUpperCase(isbn10.charAt(9)))
+      if (checkDigit != isbn10.charAt(9))
         throw new ISBNException("Suspect check digit " + checkDigit + ": " + input);
 
       ISBN isbn = new ISBN(toIsbn13(isbn10), isbn10);

@@ -145,4 +145,10 @@ public class ISBNTest {
     assertThat(ISBN.parseIsbn("0470747722").hashCode(), is(not(hashCode)));
     assertThat(ISBN.parseIsbn("111800759X").hashCode(), is(not(hashCode)));
   }
+
+  @Test
+  public void isbn10ShouldBeAlwaysUpperCase() throws Exception {
+    assertThat(ISBN.parseIsbn("111800759X").getIsbn10(), is("111800759X"));
+    assertThat(ISBN.parseIsbn("111800759x").getIsbn10(), is("111800759X"));
+  }
 }
