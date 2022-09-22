@@ -46,11 +46,11 @@ public class ISBN implements Serializable {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ISBN.class);
 
-  public static final Pattern PATTERN = Pattern.compile("\\b(?:(97[89](?:[- ]?\\d){10})|((?:\\d[- ]?){9}[\\dX]))\\b", Pattern.CASE_INSENSITIVE);
+  public static final Pattern PATTERN = Pattern.compile("\\b(?:(97[89](?:\\s*[^\\s\\dXx]?\\s*\\d){10})|((?:\\d\\s*[^\\s\\dXx]?\\s*){9}[\\dXx]))\\b");
 
-  private static final Pattern PATTERN_WITHOUT_CHECK_DIGIT = Pattern.compile("\\b(?:(97[89](?:[- ]?\\d){9,10})|((?:\\d[- ]?){9}[\\dX]?))\\b", Pattern.CASE_INSENSITIVE);
+  private static final Pattern PATTERN_WITHOUT_CHECK_DIGIT = Pattern.compile("\\b(?:(97[89](?:\\s*[^\\s\\dXx]?\\s*\\d){9,10})|((?:\\d\\s*[^\\s\\dXx]?\\s*){9}[\\dXx]?))\\b");
 
-  private static final Pattern GROUP_SEPARATOR_PATTERN = Pattern.compile("[- ]", Pattern.CASE_INSENSITIVE);
+  private static final Pattern GROUP_SEPARATOR_PATTERN = Pattern.compile("[^\\dXx]+");
 
   private static final String URI_PREFIX = "urn:isbn:";
 
