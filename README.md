@@ -45,6 +45,7 @@ class HelloWorld {
 
 ### 1.1.0
 
+* ISBN ranges by Sat, 1 Oct 2022 21:33:12 BST
 * Expand ISBN pattern to handle complex cases
 * Fix ISBN-10 case bug
 
