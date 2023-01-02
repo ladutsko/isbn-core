@@ -43,6 +43,10 @@ class HelloWorld {
 
 ## Changelog
 
+### 1.1.1
+
+* ISBN ranges by Mon, 2 Jan 2023 19:47:33 GMT
+
 ### 1.1.0
 
 * ISBN ranges by Sat, 1 Oct 2022 21:33:12 BST
