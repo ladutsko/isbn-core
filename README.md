@@ -10,12 +10,12 @@ tools to parse, validate and format one.
 <dependency>
     <groupId>com.github.ladutsko</groupId>
     <artifactId>isbn-core</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.2</version>
 </dependency>
 ```
 
 ```groovy
-implementation 'com.github.ladutsko:isbn-core:1.1.0'
+implementation 'com.github.ladutsko:isbn-core:1.1.2'
 ```
 
 ## Quick start
@@ -42,6 +42,10 @@ class HelloWorld {
 ```
 
 ## Changelog
+
+### 1.1.2
+
+* ISBN ranges by Sat, 8 Apr 2023 14:43:47 BST
 
 ### 1.1.1
 
