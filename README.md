@@ -5,6 +5,7 @@ tools to parse, validate and format one.
  
 * Java 1.5+
 * OSGi compatible
+* GraalVM compatible
 
 ```xml
 <dependency>
@@ -42,6 +43,10 @@ class HelloWorld {
 ```
 
 ## Changelog
+
+### 1.2.0
+
+* Support GraalVM native image
 
 ### 1.1.2
 
