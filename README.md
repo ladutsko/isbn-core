@@ -46,6 +46,7 @@ class HelloWorld {
 
 ### 1.2.0
 
+* ISBN ranges by Sat, 1 Jul 2023 15:55:28 BST
 * Support GraalVM native image
 
 ### 1.1.2
