@@ -62,8 +62,8 @@
         <url>git@github.com:ladutsko/isbn-core.git</url>
         <connection>scm:git:git@github.com:ladutsko/isbn-core.git</connection>
         <developerConnection>scm:git:git@github.com:ladutsko/isbn-core.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <developers>
         <developer>
