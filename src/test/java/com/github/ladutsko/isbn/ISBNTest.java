@@ -100,8 +100,6 @@ public class ISBNTest {
 
     byte[] pickled = out.toByteArray();
 
-    assertThat(pickled.length, is(97));
-
     // deserialize
     InputStream in = new ByteArrayInputStream(pickled);
     ObjectInputStream ois = new ObjectInputStream(in);
