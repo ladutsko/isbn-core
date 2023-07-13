@@ -23,8 +23,8 @@
 
 package com.github.ladutsko.isbn;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.Arrays;
 import java.util.Collection;

@@ -23,8 +23,8 @@
 
 package com.github.ladutsko.isbn;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,8 +34,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
-import com.github.ladutsko.isbn.ISBNFormat;
 
 /**
  * @author <a href="mailto:ladutsko@gmail.com">George Ladutsko</a>
