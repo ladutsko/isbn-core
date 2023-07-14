@@ -1,6 +1,9 @@
 name: Native CI
 
-on: push
+on:
+  push:
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   build:
