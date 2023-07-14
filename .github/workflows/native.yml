@@ -20,5 +20,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'graalvm'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           cache: 'maven'
       - run: mvn -Pnative --batch-mode package
