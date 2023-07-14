@@ -11,6 +11,7 @@ jobs:
       matrix:
         java-version: [8, 11, 17]
 
+    name: java ${{ matrix.java-version }}
     runs-on: ubuntu-latest
     continue-on-error: true
 
