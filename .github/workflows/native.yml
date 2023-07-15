@@ -4,6 +4,9 @@ on:
   push:
     paths-ignore:
       - 'README.md'
+      - '.mvn/**'
+      - 'mvnw'
+      - 'mvnw.cmd'
 
 jobs:
   build:
