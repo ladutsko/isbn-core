@@ -160,5 +160,13 @@
         "parameterTypes": []
       }
     ]
+  },
+  {
+    "name": "org.hamcrest.core.StringContains",
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "name": "org.hamcrest.core.SubstringMatcher",
+    "queryAllDeclaredMethods": true
   }
 ]
