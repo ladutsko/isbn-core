@@ -1,0 +1,14 @@
+{
+  "types":[
+    {
+      "name":"com.github.ladutsko.isbn.ISBN"
+    },
+    {
+      "name":"java.lang.String"
+    }
+  ],
+  "lambdaCapturingTypes":[
+  ],
+  "proxies":[
+  ]
+}
