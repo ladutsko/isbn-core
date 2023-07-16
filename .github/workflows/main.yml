@@ -3,8 +3,9 @@ name: Main CI
 on:
   push:
     paths-ignore:
-      - 'README.md'
+      - '.github/workflows/native.yml'
       - '.mvn/**'
+      - 'README.md'
       - 'mvnw'
       - 'mvnw.cmd'
 
