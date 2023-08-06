@@ -1,5 +1,6 @@
 ## 1.3.0
 
+* ISBN ranges by Sun, 6 Aug 2023 16:36:13 BST
 * Improve GraalVM native image support
 
 ## 1.2.0
