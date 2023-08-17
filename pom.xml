@@ -166,6 +166,33 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>${versions-maven-plugin.version}</version>
+                <configuration>
+                    <ignoredVersions>
+                        <ignoreVersion type="regex">.*[-_\.](alpha|Alpha|ALPHA|beta|Beta|BETA|rc|RC|M|EA).*</ignoreVersion>
+                    </ignoredVersions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>display-dependency-updates</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>display-dependency-updates</goal>
+                        </goals>
+                        <configuration>
+                            <outputFile>${project.build.directory}/reports/versions/outdated-dependencies.txt</outputFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>display-plugin-updates</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>display-plugin-updates</goal>
+                        </goals>
+                        <configuration>
+                            <outputFile>${project.build.directory}/reports/versions/outdated-plugins.txt</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
