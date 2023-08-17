@@ -2,9 +2,12 @@ name: Native CI
 
 on:
   push:
+    branches-ignore:
+      - 'master'
     paths-ignore:
       - '.github/workflows/main.yml'
       - '.mvn/**'
+      - 'CHANGELOG.md'
       - 'README.md'
       - 'mvnw'
       - 'mvnw.cmd'
