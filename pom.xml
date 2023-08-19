@@ -38,14 +38,14 @@
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
-        <native.maven.plugin.version>0.9.23</native.maven.plugin.version>
+        <native.maven.plugin.version>0.9.24</native.maven.plugin.version>
         <versions-maven-plugin.version>2.16.0</versions-maven-plugin.version>
 
         <!-- dependencies -->
 
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jaxb-impl.version>2.3.8</jaxb-impl.version>
-        <junit.jupiter.version>5.9.3</junit.jupiter.version>
+        <junit.jupiter.version>5.10.0</junit.jupiter.version>
         <junit.version>4.13.2</junit.version>
         <logback.version>1.2.12</logback.version>
         <slf4j.version>1.7.36</slf4j.version>
