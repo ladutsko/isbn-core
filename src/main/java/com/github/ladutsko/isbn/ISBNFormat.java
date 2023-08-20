@@ -125,15 +125,20 @@ public class ISBNFormat {
       List<Range> rangeList = rangeMap.get(prefix);
       if (LOGGER.isDebugEnabled())
         LOGGER.debug("Prefix {} contains {} range(s)", prefix, (null == rangeList ? 0 : rangeList.size()));
-      if (null != rangeList) {
-        sb.append(input.substring(beginIndex, i)).append(groupSeparator);
+      if (null == rangeList) {
+        continue;
+      }
+      sb.append(input.substring(beginIndex, i)).append(groupSeparator);
+      if (rangeList.isEmpty()) {
+        return sb.append(input.substring(i, beginIndex + 9)).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
+      } else {
         for (Range range : rangeList) {
-          String pubIdStr =  input.substring(i, i+range.length);
+          String pubIdStr = input.substring(i, i + range.length);
           int pubId = Integer.parseInt(pubIdStr);
           if (range.min <= pubId && range.max >= pubId) {
             if (LOGGER.isDebugEnabled())
               LOGGER.debug("Found publisher range {}-{}. Return formatted isbn.", range.min, range.max);
-            return sb.append(pubIdStr).append(groupSeparator).append(input.substring(i+range.length, beginIndex + 9)).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
+            return sb.append(pubIdStr).append(groupSeparator).append(input.substring(i + range.length, beginIndex + 9)).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
           }
         }
         break;
@@ -180,7 +185,7 @@ public class ISBNFormat {
       Map<String, List<Range>> rangeMap = new TreeMap<String, List<Range>>();
       for (Group group : isbnRangeMessage.getRegistrationGroups().getGroup()) {
         List<Rule> ruleList = group.getRules().getRule();
-        List<Range> rangeList = null;
+        List<Range> rangeList = new ArrayList<Range>(ruleList.size());
         for (Rule rule : ruleList) {
           int length = Integer.parseInt(rule.getLength());
           if (0 == length)
@@ -194,17 +199,13 @@ public class ISBNFormat {
           range.min = Integer.parseInt(rangeStr.substring(0, length));
           range.max = Integer.parseInt(rangeStr.substring(p+1, p+1+length));
 
-          if (null == rangeList)
-            rangeList = new ArrayList<Range>(ruleList.size());
           rangeList.add(range);
         }
 
-        if (null != rangeList && !rangeList.isEmpty()) {
-          String prefix = group.getPrefix().replace("-", "").intern();
-          if (LOGGER.isDebugEnabled())
-            LOGGER.debug("Put {} range(s) for prefix {}", rangeList.size(), prefix);
-          rangeMap.put(prefix, rangeList);
-        }
+        String prefix = group.getPrefix().replace("-", "").intern();
+        if (LOGGER.isDebugEnabled())
+          LOGGER.debug("Put {} range(s) for prefix {}", rangeList.size(), prefix);
+        rangeMap.put(prefix, rangeList);
       }
       globalRangeMap = Collections.unmodifiableMap(rangeMap);
     } catch (Exception e) {
