@@ -1,5 +1,6 @@
 ## 1.4.0
 
+* ISBN ranges by Sat, 2 Sep 2023 12:49:20 BST
 * Improve regional isbn formatting
 
 ## 1.3.0
