@@ -76,15 +76,13 @@ public class RangeMessageLoader {
    * @throws RangeMessageException if something is wrong
    */
   public ISBNRangeMessage load() throws RangeMessageException {
-    if (LOGGER.isTraceEnabled())
-      LOGGER.trace("Start loadRangeMessage ...");
+    LOGGER.trace("Start loadRangeMessage ...");
     try {
       JAXBContext context = JAXBContext.newInstance(RANGE_MESSAGE_PACKAGE);
       Unmarshaller unmarshaller = context.createUnmarshaller();
 
       String rangeMessageUrl = getRangeMessageUrl();
-      if (LOGGER.isDebugEnabled())
-        LOGGER.debug("Open resource as stream: {}", rangeMessageUrl);
+      LOGGER.debug("Open resource as stream: {}", rangeMessageUrl);
       InputStream in = new URL(rangeMessageUrl).openStream();
 
       ISBNRangeMessage isbnRangeMessage;
@@ -94,17 +92,14 @@ public class RangeMessageLoader {
         try {
           in.close();
         } catch (IOException e) {
-          if (LOGGER.isErrorEnabled())
-            LOGGER.error(e.getMessage(), e);
+          LOGGER.error(e.getMessage(), e);
         }
       }
 
-      if (LOGGER.isDebugEnabled()) {
-        LOGGER.debug("MessageSource: {}", isbnRangeMessage.getMessageSource());
-        LOGGER.debug("MessageSerialNumber: {}", isbnRangeMessage.getMessageSerialNumber());
-        LOGGER.debug("MessageDate: {}", isbnRangeMessage.getMessageDate());
-        LOGGER.debug("RegistrationGroups size: {}", isbnRangeMessage.getRegistrationGroups().getGroup().size());
-      }
+      LOGGER.debug("MessageSource: {}", isbnRangeMessage.getMessageSource());
+      LOGGER.debug("MessageSerialNumber: {}", isbnRangeMessage.getMessageSerialNumber());
+      LOGGER.debug("MessageDate: {}", isbnRangeMessage.getMessageDate());
+      LOGGER.debug("RegistrationGroups size: {}", isbnRangeMessage.getRegistrationGroups().getGroup().size());
 
       return isbnRangeMessage;
     } catch (Exception e) {

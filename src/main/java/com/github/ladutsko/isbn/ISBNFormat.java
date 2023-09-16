@@ -123,8 +123,7 @@ public class ISBNFormat {
     for (int i = start; end >= i; ++i) {
       String prefix = (0 == beginIndex ? ISBN.DEFAULT_PREFIX + input.substring(0, i) : input.substring(0, i)).intern();
       List<Range> rangeList = rangeMap.get(prefix);
-      if (LOGGER.isDebugEnabled())
-        LOGGER.debug("Prefix {} contains {} range(s)", prefix, (null == rangeList ? 0 : rangeList.size()));
+      LOGGER.debug("Prefix {} contains {} range(s)", prefix, (null == rangeList ? 0 : rangeList.size()));
       if (null == rangeList) {
         continue;
       }
@@ -136,8 +135,7 @@ public class ISBNFormat {
           String pubIdStr = input.substring(i, i + range.length);
           int pubId = Integer.parseInt(pubIdStr);
           if (range.min <= pubId && range.max >= pubId) {
-            if (LOGGER.isDebugEnabled())
-              LOGGER.debug("Found publisher range {}-{}. Return formatted isbn.", range.min, range.max);
+            LOGGER.debug("Found publisher range {}-{}. Return formatted isbn.", range.min, range.max);
             return sb.append(pubIdStr).append(groupSeparator).append(input.substring(i + range.length, beginIndex + 9)).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
           }
         }
@@ -145,8 +143,7 @@ public class ISBNFormat {
       }
     }
 
-    if (LOGGER.isDebugEnabled())
-      LOGGER.debug("Not matched. Return simple formatted isbn.");
+    LOGGER.debug("Not matched. Return simple formatted isbn.");
 
     sb.setLength(0);
     if (0 < beginIndex)
@@ -155,8 +152,7 @@ public class ISBNFormat {
   }
 
   protected Map<String, List<Range>> getRangeMap() {
-    if (LOGGER.isTraceEnabled())
-      LOGGER.trace("Start getRangeMap ...");
+    LOGGER.trace("Start getRangeMap ...");
     rwl.readLock().lock();
     if (null == globalRangeMap) {
        // Must release read lock before acquiring write lock
@@ -178,8 +174,7 @@ public class ISBNFormat {
   }
 
   private void initialize() {
-    if (LOGGER.isTraceEnabled())
-      LOGGER.trace("Start initialize ...");
+    LOGGER.trace("Start initialize ...");
     try {
       ISBNRangeMessage isbnRangeMessage = new RangeMessageLoader(getClass().getResource(RANGE_MESSAGE_RESOURCE_NAME).toString()).load();
       Map<String, List<Range>> rangeMap = new TreeMap<String, List<Range>>();
@@ -203,8 +198,7 @@ public class ISBNFormat {
         }
 
         String prefix = group.getPrefix().replace("-", "").intern();
-        if (LOGGER.isDebugEnabled())
-          LOGGER.debug("Put {} range(s) for prefix {}", rangeList.size(), prefix);
+        LOGGER.debug("Put {} range(s) for prefix {}", rangeList.size(), prefix);
         rangeMap.put(prefix, rangeList);
       }
       globalRangeMap = Collections.unmodifiableMap(rangeMap);

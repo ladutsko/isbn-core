@@ -138,16 +138,13 @@ public class ISBN implements Serializable {
    * @throws ISBNException if something is wrong
    */
   public static ISBN parseIsbn(final CharSequence input) throws ISBNException {
-    if (LOGGER.isDebugEnabled())
-      LOGGER.debug("Start parseIsbn with params [input = {}]", input);
+    LOGGER.debug("Start parseIsbn with params [input = {}]", input);
 
     if (null == input || 0 == input.length())
       throw new IllegalArgumentException("isbn = " + input);
 
     Matcher m = matcher(input, PATTERN);
-
-    if (LOGGER.isDebugEnabled())
-      LOGGER.debug("Matcher: {}", m);
+    LOGGER.debug("Matcher: {}", m);
 
     if (null != m.group(1)) {
       String isbn13 = normalize(m.group());
@@ -156,8 +153,7 @@ public class ISBN implements Serializable {
         throw new ISBNException("Suspect check digit " + checkDigit + ": " + input);
 
       ISBN isbn = new ISBN(isbn13, toIsbn10(isbn13));
-      if (LOGGER.isDebugEnabled())
-        LOGGER.debug("Return: {}", isbn);
+      LOGGER.debug("Return: {}", isbn);
       return isbn;
     }
 
@@ -168,8 +164,7 @@ public class ISBN implements Serializable {
         throw new ISBNException("Suspect check digit " + checkDigit + ": " + input);
 
       ISBN isbn = new ISBN(toIsbn13(isbn10), isbn10);
-      if (LOGGER.isDebugEnabled())
-        LOGGER.debug("Return: {}", isbn);
+      LOGGER.debug("Return: {}", isbn);
       return isbn;
     }
 
