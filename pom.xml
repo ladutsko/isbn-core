@@ -40,7 +40,7 @@
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <native.maven.plugin.version>0.9.27</native.maven.plugin.version>
-        <versions-maven-plugin.version>2.16.0</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.16.1</versions-maven-plugin.version>
 
         <!-- dependencies -->
 
