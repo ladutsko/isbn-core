@@ -46,42 +46,19 @@ public class RangeMessageLoader {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(RangeMessageLoader.class);
 
-  private String rangeMessageUrl;
-
-  public RangeMessageLoader() {
-  }
-
-  public RangeMessageLoader(final String rangeMessageUrl) {
-    setRangeMessageUrl(rangeMessageUrl);
-  }
-
-  /**
-   * @return rangeMessageUrl
-   */
-  public String getRangeMessageUrl() {
-    return rangeMessageUrl;
-  }
-
-  /**
-   * @param rangeMessageUrl rangeMessageUrl
-   */
-  public void setRangeMessageUrl(final String rangeMessageUrl) {
-    this.rangeMessageUrl = rangeMessageUrl;
-  }
-
   /**
    * Load RangeMessage.xml and return model
    *
+   * @param rangeMessageUrl rangeMessageUrl
    * @return model
    * @throws RangeMessageException if something is wrong
    */
-  public ISBNRangeMessage load() throws RangeMessageException {
+  public ISBNRangeMessage load(final String rangeMessageUrl) throws RangeMessageException {
     LOGGER.trace("Start loadRangeMessage ...");
     try {
       JAXBContext context = JAXBContext.newInstance(RANGE_MESSAGE_PACKAGE);
       Unmarshaller unmarshaller = context.createUnmarshaller();
 
-      String rangeMessageUrl = getRangeMessageUrl();
       LOGGER.debug("Open resource as stream: {}", rangeMessageUrl);
       InputStream in = new URL(rangeMessageUrl).openStream();
 

@@ -28,7 +28,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -82,11 +81,7 @@ public class ISBN implements Serializable {
    * @return urn
    */
   public URI toURI() {
-    try {
-      return new URI(URI_PREFIX + isbn13);
-    } catch (URISyntaxException e) {
-      throw new RuntimeException(e);
-    }
+    return URI.create(URI_PREFIX + isbn13);
   }
 
   /**
@@ -146,6 +141,8 @@ public class ISBN implements Serializable {
     Matcher m = matcher(input, PATTERN);
     LOGGER.debug("Matcher: {}", m);
 
+    assert 2 == m.groupCount() : "Unexpected groups count: " + m.groupCount();
+
     if (null != m.group(1)) {
       String isbn13 = normalize(m.group());
       char checkDigit = calculateCheckDigit13(isbn13);
@@ -155,9 +152,7 @@ public class ISBN implements Serializable {
       ISBN isbn = new ISBN(isbn13, toIsbn10(isbn13));
       LOGGER.debug("Return: {}", isbn);
       return isbn;
-    }
-
-    if (null != m.group(2)) {
+    } else {
       String isbn10 = normalize(m.group()).toUpperCase();
       char checkDigit = calculateCheckDigit10(isbn10);
       if (checkDigit != isbn10.charAt(9))
@@ -167,8 +162,6 @@ public class ISBN implements Serializable {
       LOGGER.debug("Return: {}", isbn);
       return isbn;
     }
-
-    throw new RuntimeException("Unexpected exception");
   }
 
   /**
@@ -210,14 +203,15 @@ public class ISBN implements Serializable {
       return null;
 
     Matcher m = matcher(input, PATTERN_WITHOUT_CHECK_DIGIT);
+    LOGGER.debug("Matcher: {}", m);
 
-    if (null != m.group(1))
+    assert 2 == m.groupCount() : "Unexpected groups count: " + m.groupCount();
+
+    if (null != m.group(1)) {
       return String.valueOf(calculateCheckDigit13(normalize(m.group())));
-
-    if (null != m.group(2))
+    } else {
       return String.valueOf(calculateCheckDigit10(normalize(m.group())));
-
-    throw new RuntimeException("Unexpected exception");
+    }
   }
 
   /**
@@ -258,7 +252,7 @@ public class ISBN implements Serializable {
   /**
    * Validate ISBN-10
    *
-   * @param input
+   * @param input character sequence which contains ISBN
    * @return true if input is ISBN-10
    */
   public static boolean isIsbn10(final CharSequence input) {
@@ -299,7 +293,7 @@ public class ISBN implements Serializable {
   protected static String toIsbn10(final String input) {
     if (input.startsWith(DEFAULT_PREFIX)) {
       StringBuilder sb = new StringBuilder(10);
-      sb.append(input.substring(3, 12));
+      sb.append(input, 3, 12);
       sb.append(calculateCheckDigit10(sb));
       return sb.toString();
     }
@@ -309,7 +303,7 @@ public class ISBN implements Serializable {
 
   protected static String toIsbn13(final String input) {
     StringBuilder sb = new StringBuilder(13);
-    sb.append(DEFAULT_PREFIX).append(input.substring(0, 9));
+    sb.append(DEFAULT_PREFIX).append(input, 0, 9);
     sb.append(calculateCheckDigit13(sb));
     return sb.toString();
   }

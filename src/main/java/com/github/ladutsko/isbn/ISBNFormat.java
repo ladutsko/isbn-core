@@ -59,10 +59,11 @@ public class ISBNFormat {
   private String groupSeparator;
 
   public ISBNFormat() {
+    this(HYPHEN_GROUP_SEPARATOR);
   }
 
   public ISBNFormat(final String groupSeparator) {
-    setGroupSeparator(groupSeparator);
+    this.groupSeparator = groupSeparator;
   }
 
   /**
@@ -103,21 +104,22 @@ public class ISBNFormat {
       return null;
 
     Matcher m = ISBN.matcher(input);
+    LOGGER.debug("Matcher: {}", m);
 
-    if (null != m.group(1))
+    assert 2 == m.groupCount() : "Unexpected groups count: " + m.groupCount();
+
+    if (null != m.group(1)) {
       return format(ISBN.normalize(input), (null == groupSeparator ? HYPHEN_GROUP_SEPARATOR : groupSeparator), 3);
-
-    if (null != m.group(2))
+    } else {
       return format(ISBN.normalize(input), (null == groupSeparator ? HYPHEN_GROUP_SEPARATOR : groupSeparator), 0);
-
-    return input.toString();
+    }
   }
 
   protected String format(final String input, final String groupSeparator, final int beginIndex) {
     Map<String, List<Range>> rangeMap = getRangeMap();
     StringBuilder sb = new StringBuilder(17);
     if (0 < beginIndex)
-      sb.append(input.substring(0, 3)).append(groupSeparator);
+      sb.append(input, 0, 3).append(groupSeparator);
     int start = beginIndex + 1;
     int end = beginIndex + 7;
     for (int i = start; end >= i; ++i) {
@@ -127,16 +129,16 @@ public class ISBNFormat {
       if (null == rangeList) {
         continue;
       }
-      sb.append(input.substring(beginIndex, i)).append(groupSeparator);
+      sb.append(input, beginIndex, i).append(groupSeparator);
       if (rangeList.isEmpty()) {
-        return sb.append(input.substring(i, beginIndex + 9)).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
+        return sb.append(input, i, beginIndex + 9).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
       } else {
         for (Range range : rangeList) {
           String pubIdStr = input.substring(i, i + range.length);
           int pubId = Integer.parseInt(pubIdStr);
           if (range.min <= pubId && range.max >= pubId) {
             LOGGER.debug("Found publisher range {}-{}. Return formatted isbn.", range.min, range.max);
-            return sb.append(pubIdStr).append(groupSeparator).append(input.substring(i + range.length, beginIndex + 9)).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
+            return sb.append(pubIdStr).append(groupSeparator).append(input, i + range.length, beginIndex + 9).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
           }
         }
         break;
@@ -147,8 +149,8 @@ public class ISBNFormat {
 
     sb.setLength(0);
     if (0 < beginIndex)
-      sb.append(input.substring(0, 3)).append(groupSeparator);
-    return sb.append(input.substring(beginIndex, beginIndex + 9)).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
+      sb.append(input, 0, 3).append(groupSeparator);
+    return sb.append(input, beginIndex, beginIndex + 9).append(groupSeparator).append(input.substring(beginIndex + 9)).toString();
   }
 
   protected Map<String, List<Range>> getRangeMap() {
@@ -173,10 +175,11 @@ public class ISBNFormat {
     return globalRangeMap;
   }
 
-  private void initialize() {
+  private static void initialize() {
     LOGGER.trace("Start initialize ...");
     try {
-      ISBNRangeMessage isbnRangeMessage = new RangeMessageLoader(getClass().getResource(RANGE_MESSAGE_RESOURCE_NAME).toString()).load();
+      ISBNRangeMessage isbnRangeMessage = new RangeMessageLoader()
+        .load(ISBNFormat.class.getResource(RANGE_MESSAGE_RESOURCE_NAME).toString());
       Map<String, List<Range>> rangeMap = new TreeMap<String, List<Range>>();
       for (Group group : isbnRangeMessage.getRegistrationGroups().getGroup()) {
         List<Rule> ruleList = group.getRules().getRule();
@@ -208,8 +211,8 @@ public class ISBNFormat {
   }
 
   protected static class Range {
-    public int length;
-    public int min;
-    public int max;
+    protected int length;
+    protected int min;
+    protected int max;
   }
 }

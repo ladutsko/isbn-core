@@ -41,11 +41,11 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class FormatISBNTest {
 
+  private final ISBNFormat formatter = new ISBNFormat();
+
   private final String input;
   private final String groupSeparator;
   private final String result;
-
-  private ISBNFormat formatter;
 
   public FormatISBNTest(final String input, final String groupSeparator, final String result) {
     this.input = input;
@@ -55,7 +55,7 @@ public class FormatISBNTest {
 
   @Before
   public void setUp() {
-    formatter = new ISBNFormat(groupSeparator);
+    formatter.setGroupSeparator(groupSeparator);
   }
 
   @Test

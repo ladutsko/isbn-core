@@ -56,8 +56,13 @@ public class ISBNTest {
   }
 
   @Test(expected=ISBNException.class)
-  public void parseIsbnThrowISBNExceptionForWrongCheckDigit() throws Exception {
+  public void parseIsbnThrowISBNExceptionForWrongCheckDigitIsbn10() throws Exception {
     ISBN.parseIsbn("0123456780");
+  }
+
+  @Test(expected=ISBNException.class)
+  public void parseIsbnThrowISBNExceptionForWrongCheckDigitIsbn13() throws Exception {
+    ISBN.parseIsbn("9780123456780");
   }
 
   @Test
@@ -148,5 +153,85 @@ public class ISBNTest {
   public void isbn10ShouldBeAlwaysUpperCase() throws Exception {
     assertThat(ISBN.parseIsbn("111800759X").getIsbn10(), is("111800759X"));
     assertThat(ISBN.parseIsbn("111800759x").getIsbn10(), is("111800759X"));
+  }
+
+  @Test
+  public void isIsbn10ReturnTrueForIsbn10() {
+    assertThat(ISBN.isIsbn10("0123456789"), is(true));
+  }
+
+  @Test
+  public void isIsbn10ReturnFalseForNull() {
+    assertThat(ISBN.isIsbn10(null), is(false));
+  }
+
+  @Test
+  public void isIsbn10ReturnFalseForIsbn13() {
+    assertThat(ISBN.isIsbn10("9780123456786"), is(false));
+  }
+
+  @Test
+  public void isIsbn10ReturnFalseForNonIsbnString() {
+    assertThat(ISBN.isIsbn10("qwertyuiop"), is(false));
+  }
+
+  @Test
+  public void isIsbn13ReturnTrueForIsbn10() {
+    assertThat(ISBN.isIsbn13("9780123456786"), is(true));
+  }
+
+  @Test
+  public void isIsbn13ReturnFalseForNull() {
+    assertThat(ISBN.isIsbn13(null), is(false));
+  }
+
+  @Test
+  public void isIsbn13ReturnFalseForIsbn13() {
+    assertThat(ISBN.isIsbn13("0123456789"), is(false));
+  }
+
+  @Test
+  public void isIsbn13ReturnFalseForNonIsbnString() {
+    assertThat(ISBN.isIsbn13("qwertyuiop"), is(false));
+  }
+
+  @Test
+  public void isValidReturnTrueForValidIsbn10() {
+    assertThat(ISBN.isValid("0123456789"), is(true));
+  }
+
+  @Test
+  public void isValidReturnTrueForValidIsbn13() {
+    assertThat(ISBN.isValid("9780123456786"), is(true));
+  }
+
+  @Test
+  public void isValidReturnFalseForNull() {
+    assertThat(ISBN.isValid(null), is(false));
+  }
+
+  @Test
+  public void isValidReturnFalseForWrongCheckDigitIsbn10() {
+    assertThat(ISBN.isValid("0123456780"), is(false));
+  }
+
+  @Test
+  public void isValidReturnFalseForWrongCheckDigitIsbn13() {
+    assertThat(ISBN.isValid("9780123456780"), is(false));
+  }
+
+  @Test
+  public void isValidReturnFalseForNonIsbnString() {
+    assertThat(ISBN.isValid("qwertyuiop"), is(false));
+  }
+
+  @Test
+  public void matcherReturnNullForNull() throws Exception {
+    assertThat(ISBN.matcher(null), is(nullValue()));
+  }
+
+  @Test
+  public void normalizeReturnNullForNull() {
+    assertThat(ISBN.normalize(null), is(nullValue()));
   }
 }
