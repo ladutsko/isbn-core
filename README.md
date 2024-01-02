@@ -11,12 +11,12 @@ tools to parse, validate and format one.
 <dependency>
     <groupId>com.github.ladutsko</groupId>
     <artifactId>isbn-core</artifactId>
-    <version>1.4.1</version>
+    <version>1.5.0</version>
 </dependency>
 ```
 
 ```groovy
-implementation 'com.github.ladutsko:isbn-core:1.4.1'
+implementation 'com.github.ladutsko:isbn-core:1.5.0'
 ```
 
 ## Quick start
