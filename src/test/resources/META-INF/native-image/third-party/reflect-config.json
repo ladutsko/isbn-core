@@ -1,172 +1,167 @@
 [
-  {
-    "name": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "com.sun.xml.bind.v2.ContextFactory",
-    "methods": [
-      {
-        "name": "createContext",
-        "parameterTypes": [
-          "java.lang.String",
-          "java.lang.ClassLoader",
-          "java.util.Map"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "com.sun.xml.bind.v2.model.nav.ReflectionNavigator",
-    "methods": [
-      {
-        "name": "getInstance",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "com.sun.xml.bind.v2.runtime.property.ArrayElementLeafProperty",
-    "queryAllPublicConstructors": true
-  },
-  {
-    "name": "com.sun.xml.bind.v2.runtime.property.ArrayElementNodeProperty",
-    "queryAllPublicConstructors": true,
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": [
-          "com.sun.xml.bind.v2.runtime.JAXBContextImpl",
-          "com.sun.xml.bind.v2.model.runtime.RuntimeElementPropertyInfo"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "com.sun.xml.bind.v2.runtime.property.ArrayReferenceNodeProperty",
-    "queryAllPublicConstructors": true
-  },
-  {
-    "name": "com.sun.xml.bind.v2.runtime.property.SingleElementLeafProperty",
-    "queryAllPublicConstructors": true,
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": [
-          "com.sun.xml.bind.v2.runtime.JAXBContextImpl",
-          "com.sun.xml.bind.v2.model.runtime.RuntimeElementPropertyInfo"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "com.sun.xml.bind.v2.runtime.property.SingleElementNodeProperty",
-    "queryAllPublicConstructors": true,
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": [
-          "com.sun.xml.bind.v2.runtime.JAXBContextImpl",
-          "com.sun.xml.bind.v2.model.runtime.RuntimeElementPropertyInfo"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "com.sun.xml.bind.v2.runtime.property.SingleMapNodeProperty",
-    "queryAllPublicConstructors": true
-  },
-  {
-    "name": "com.sun.xml.bind.v2.runtime.property.SingleReferenceNodeProperty",
-    "queryAllPublicConstructors": true
-  },
-  {
-    "name": "java.io.FilePermission"
-  },
-  {
-    "name": "java.lang.Object",
-    "queryAllDeclaredMethods": true
-  },
-  {
-    "name": "java.lang.RuntimePermission"
-  },
-  {
-    "name": "java.net.NetPermission"
-  },
-  {
-    "name": "java.net.SocketPermission"
-  },
-  {
-    "name": "java.net.URLPermission",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": [
-          "java.lang.String",
-          "java.lang.String"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "java.security.AllPermission"
-  },
-  {
-    "name": "java.security.SecurityPermission"
-  },
-  {
-    "name": "java.util.ArrayList",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "java.util.PropertyPermission"
-  },
-  {
-    "name": "javax.xml.bind.annotation.XmlAccessorType",
-    "methods": [
-      {
-        "name": "value",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "javax.xml.bind.annotation.XmlElement",
-    "methods": [
-      {
-        "name": "type",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "javax.xml.bind.annotation.XmlRegistry"
-  },
-  {
-    "name": "javax.xml.bind.annotation.XmlType",
-    "methods": [
-      {
-        "name": "factoryClass",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "org.hamcrest.core.StringContains",
-    "queryAllDeclaredMethods": true
-  },
-  {
-    "name": "org.hamcrest.core.SubstringMatcher",
-    "queryAllDeclaredMethods": true
-  }
+{
+  "name":"ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.joran.SerializedModelConfigurator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.util.DefaultJoranConfigurator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.core.ConsoleAppender",
+  "queryAllPublicMethods":true,
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.core.OutputStreamAppender",
+  "methods":[{"name":"setEncoder","parameterTypes":["ch.qos.logback.core.encoder.Encoder"] }]
+},
+{
+  "name":"ch.qos.logback.core.encoder.LayoutWrappingEncoder",
+  "methods":[{"name":"setParent","parameterTypes":["ch.qos.logback.core.spi.ContextAware"] }]
+},
+{
+  "name":"ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
+  "methods":[{"name":"setPattern","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"com.github.ladutsko.isbn.FormatISBNTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"forma","parameterTypes":[] }, 
+    {"name":"getParameters","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.github.ladutsko.isbn.ISBNFormatTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"formatReturnNullForNull","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.github.ladutsko.isbn.ISBNTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
+    {"name":"equalsReturnFalseForNull","parameterTypes":[] }, 
+    {"name":"equalsReturnFalseForOther","parameterTypes":[] }, 
+    {"name":"equalsReturnFalseForOtherType","parameterTypes":[] }, 
+    {"name":"equalsReturnTrueForSimilar","parameterTypes":[] }, 
+    {"name":"equalsReturnTrueForTheSame","parameterTypes":[] }, 
+    {"name":"hashCodeIsDifferent","parameterTypes":[] }, 
+    {"name":"hashCodeIsStable","parameterTypes":[] }, 
+    {"name":"isIsbn10ReturnFalseForIsbn13","parameterTypes":[] }, 
+    {"name":"isIsbn10ReturnFalseForNonIsbnString","parameterTypes":[] }, 
+    {"name":"isIsbn10ReturnFalseForNull","parameterTypes":[] }, 
+    {"name":"isIsbn10ReturnTrueForIsbn10","parameterTypes":[] }, 
+    {"name":"isIsbn13ReturnFalseForIsbn13","parameterTypes":[] }, 
+    {"name":"isIsbn13ReturnFalseForNonIsbnString","parameterTypes":[] }, 
+    {"name":"isIsbn13ReturnFalseForNull","parameterTypes":[] }, 
+    {"name":"isIsbn13ReturnTrueForIsbn10","parameterTypes":[] }, 
+    {"name":"isValidReturnFalseForNonIsbnString","parameterTypes":[] }, 
+    {"name":"isValidReturnFalseForNull","parameterTypes":[] }, 
+    {"name":"isValidReturnFalseForWrongCheckDigitIsbn10","parameterTypes":[] }, 
+    {"name":"isValidReturnFalseForWrongCheckDigitIsbn13","parameterTypes":[] }, 
+    {"name":"isValidReturnTrueForValidIsbn10","parameterTypes":[] }, 
+    {"name":"isValidReturnTrueForValidIsbn13","parameterTypes":[] }, 
+    {"name":"isbn10ShouldBeAlwaysUpperCase","parameterTypes":[] }, 
+    {"name":"matcherReturnNullForNull","parameterTypes":[] }, 
+    {"name":"normalizeReturnNullForNull","parameterTypes":[] }, 
+    {"name":"parseIsbnThrowISBNExceptionForNotWelFormed","parameterTypes":[] }, 
+    {"name":"parseIsbnThrowISBNExceptionForWrongCheckDigitIsbn10","parameterTypes":[] }, 
+    {"name":"parseIsbnThrowISBNExceptionForWrongCheckDigitIsbn13","parameterTypes":[] }, 
+    {"name":"parseIsbnThrowIllegalArgumentExceptionForEmpty","parameterTypes":[] }, 
+    {"name":"parseIsbnThrowIllegalArgumentExceptionForNull","parameterTypes":[] }, 
+    {"name":"serializationTest","parameterTypes":[] }, 
+    {"name":"toStringTest","parameterTypes":[] }, 
+    {"name":"toURITest","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.github.ladutsko.isbn.ParseISBNTest",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllPublicMethods":true,
+  "queryAllPublicConstructors":true,
+  "methods":[
+    {"name":"<init>","parameterTypes":["java.lang.String","java.lang.String","java.lang.String"] }, 
+    {"name":"getParameters","parameterTypes":[] }, 
+    {"name":"setUp","parameterTypes":[] }, 
+    {"name":"test","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.xml.internal.stream.XMLInputFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.Object",
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"org.apache.maven.surefire.junitplatform.JUnitPlatformProvider",
+  "methods":[{"name":"<init>","parameterTypes":["org.apache.maven.surefire.api.provider.ProviderParameters"] }]
+},
+{
+  "name":"org.hamcrest.core.StringContains",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.hamcrest.core.SubstringMatcher",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.junit.platform.launcher.LauncherSession",
+  "methods":[{"name":"getLauncher","parameterTypes":[] }]
+},
+{
+  "name":"org.junit.platform.launcher.core.LauncherFactory",
+  "methods":[{"name":"openSession","parameterTypes":[] }]
+},
+{
+  "name":"org.junit.runner.Description",
+  "fields":[{"name":"fUniqueId"}]
+},
+{
+  "name":"org.junit.runners.Parameterized",
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.Class"] }]
+},
+{
+  "name":"sun.security.provider.DRBG",
+  "methods":[{"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.SHA2$SHA256",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
 ]

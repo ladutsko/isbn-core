@@ -1,0 +1,20 @@
+{
+  "types":[
+    {
+      "name":"com.github.ladutsko.isbn.ISBN"
+    },
+    {
+      "name":"java.lang.String"
+    },
+    {
+      "name":"org.junit.platform.launcher.TestIdentifier$SerializedForm"
+    },
+    {
+      "name":"org.junit.runner.Result$SerializedForm"
+    }
+  ],
+  "lambdaCapturingTypes":[
+  ],
+  "proxies":[
+  ]
+}
