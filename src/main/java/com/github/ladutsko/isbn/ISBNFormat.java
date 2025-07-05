@@ -31,9 +31,9 @@ import java.util.TreeMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.regex.Matcher;
 
-import org.isbn.prefix.ranges.model.Group;
-import org.isbn.prefix.ranges.model.ISBNRangeMessage;
-import org.isbn.prefix.ranges.model.Rule;
+import com.github.ladutsko.isbn.impl.model.Group;
+import com.github.ladutsko.isbn.impl.model.ISBNRangeMessage;
+import com.github.ladutsko.isbn.impl.model.Rule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -181,15 +181,15 @@ public class ISBNFormat {
       ISBNRangeMessage isbnRangeMessage = new RangeMessageLoader()
         .load(ISBNFormat.class.getResource(RANGE_MESSAGE_RESOURCE_NAME).toString());
       Map<String, List<Range>> rangeMap = new TreeMap<String, List<Range>>();
-      for (Group group : isbnRangeMessage.getRegistrationGroups().getGroup()) {
-        List<Rule> ruleList = group.getRules().getRule();
+      for (Group group : isbnRangeMessage.registrationGroups) {
+        List<Rule> ruleList = group.rules;
         List<Range> rangeList = new ArrayList<Range>(ruleList.size());
         for (Rule rule : ruleList) {
-          int length = Integer.parseInt(rule.getLength());
+          int length = Integer.parseInt(rule.length);
           if (0 == length)
             continue;
 
-          String rangeStr = rule.getRange();
+          String rangeStr = rule.range;
           int p = rangeStr.indexOf('-');
 
           Range range = new Range();
@@ -200,7 +200,7 @@ public class ISBNFormat {
           rangeList.add(range);
         }
 
-        String prefix = group.getPrefix().replace("-", "").intern();
+        String prefix = group.prefix.replace("-", "").intern();
         LOGGER.debug("Put {} range(s) for prefix {}", rangeList.size(), prefix);
         rangeMap.put(prefix, rangeList);
       }

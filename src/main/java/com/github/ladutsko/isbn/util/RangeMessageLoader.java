@@ -27,10 +27,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-
-import org.isbn.prefix.ranges.model.ISBNRangeMessage;
+import com.github.ladutsko.isbn.impl.RangeMessageParser;
+import com.github.ladutsko.isbn.impl.model.ISBNRangeMessage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,8 +39,6 @@ import org.slf4j.LoggerFactory;
  * @author <a href="mailto:ladutsko@gmail.com">George Ladutsko</a>
  */
 public class RangeMessageLoader {
-
-  private static final String RANGE_MESSAGE_PACKAGE = "org.isbn.prefix.ranges.model";
 
   private static final Logger LOGGER = LoggerFactory.getLogger(RangeMessageLoader.class);
 
@@ -56,15 +52,14 @@ public class RangeMessageLoader {
   public ISBNRangeMessage load(final String rangeMessageUrl) throws RangeMessageException {
     LOGGER.trace("Start loadRangeMessage ...");
     try {
-      JAXBContext context = JAXBContext.newInstance(RANGE_MESSAGE_PACKAGE);
-      Unmarshaller unmarshaller = context.createUnmarshaller();
+      RangeMessageParser parser = new RangeMessageParser();
 
       LOGGER.debug("Open resource as stream: {}", rangeMessageUrl);
       InputStream in = new URL(rangeMessageUrl).openStream();
 
       ISBNRangeMessage isbnRangeMessage;
       try {
-        isbnRangeMessage = (ISBNRangeMessage) unmarshaller.unmarshal(in);
+        isbnRangeMessage = parser.parse(in);
       } finally {
         try {
           in.close();
@@ -73,10 +68,10 @@ public class RangeMessageLoader {
         }
       }
 
-      LOGGER.debug("MessageSource: {}", isbnRangeMessage.getMessageSource());
-      LOGGER.debug("MessageSerialNumber: {}", isbnRangeMessage.getMessageSerialNumber());
-      LOGGER.debug("MessageDate: {}", isbnRangeMessage.getMessageDate());
-      LOGGER.debug("RegistrationGroups size: {}", isbnRangeMessage.getRegistrationGroups().getGroup().size());
+      LOGGER.debug("MessageSource: {}", isbnRangeMessage.messageSource);
+      LOGGER.debug("MessageSerialNumber: {}", isbnRangeMessage.messageSerialNumber);
+      LOGGER.debug("MessageDate: {}", isbnRangeMessage.messageDate);
+      LOGGER.debug("RegistrationGroups size: {}", isbnRangeMessage.registrationGroups.size());
 
       return isbnRangeMessage;
     } catch (Exception e) {
