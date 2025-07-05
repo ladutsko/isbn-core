@@ -3,7 +3,7 @@
 `ISBN core` is a small library that contains a representation object of ISBN-10 and ISBN-13 and
 tools to parse, validate and format one.
  
-* Java 1.5+
+* Java 1.8+
 * OSGi compatible
 * GraalVM compatible
 
@@ -11,12 +11,12 @@ tools to parse, validate and format one.
 <dependency>
     <groupId>com.github.ladutsko</groupId>
     <artifactId>isbn-core</artifactId>
-    <version>1.5.3</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
 ```groovy
-implementation 'com.github.ladutsko:isbn-core:1.5.3'
+implementation 'com.github.ladutsko:isbn-core:2.0.0'
 ```
 
 ## Quick start

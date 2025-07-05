@@ -1,3 +1,9 @@
+## 2.0.0
+
+* ISBN ranges by Sat, 5 Jul 2025 18:00:09 BST
+* Bump dependencies & plugins versions
+* Remove JAXB dependency
+
 ## 1.5.3
 
 * ISBN ranges by Thu, 3 Oct 2024 13:50:46 BST
