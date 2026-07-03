@@ -123,7 +123,7 @@ public class ISBNFormat {
     int start = beginIndex + 1;
     int end = beginIndex + 7;
     for (int i = start; end >= i; ++i) {
-      String prefix = (0 == beginIndex ? ISBN.DEFAULT_PREFIX + input.substring(0, i) : input.substring(0, i)).intern();
+      String prefix = (0 == beginIndex ? ISBN.DEFAULT_PREFIX + input.substring(0, i) : input.substring(0, i));
       List<Range> rangeList = rangeMap.get(prefix);
       LOGGER.debug("Prefix {} contains {} range(s)", prefix, (null == rangeList ? 0 : rangeList.size()));
       if (null == rangeList) {
@@ -200,7 +200,7 @@ public class ISBNFormat {
           rangeList.add(range);
         }
 
-        String prefix = group.prefix.replace("-", "").intern();
+        String prefix = group.prefix.replace("-", "");
         LOGGER.debug("Put {} range(s) for prefix {}", rangeList.size(), prefix);
         rangeMap.put(prefix, rangeList);
       }
