@@ -276,18 +276,17 @@ public class ISBN implements Serializable {
 
   protected static char calculateCheckDigit13(final CharSequence input) {
     int sum = 0;
-    for (int i = 12; 0 <= --i; )
-      sum += (0 == i % 2 ? 1 : 3) * (input.charAt(i) - 48);
-    int checkDigit = (10 - sum % 10) % 10;
-    return (char) (checkDigit + 48);
+    for (int i = 0; i < 12; i++)
+      sum += ((i & 1) == 0 ? 1 : 3) * (input.charAt(i) - '0');
+    return (char)((10 - sum % 10) % 10 + '0');
   }
 
   protected static char calculateCheckDigit10(final CharSequence input) {
     int sum = 0;
-    for (int i = 9; 0 <= --i; )
-      sum += (i + 1) * (input.charAt(i) - 48);
+    for (int i = 0; i < 9; i++)
+      sum += (i + 1) * (input.charAt(i) - '0');
     int checkDigit = sum % 11;
-    return (10 == checkDigit ? 'X' : (char) (checkDigit + 48));
+    return (10 == checkDigit ? 'X' : (char) (checkDigit + '0'));
   }
 
   protected static String toIsbn10(final String input) {
