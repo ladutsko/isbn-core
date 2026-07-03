@@ -1,3 +1,8 @@
+## 2.1.0
+
+* ISBN ranges by Fri, 3 Jul 2026 11:16:02 BST
+* minor improvements
+
 ## 2.0.1
 
 * ISBN ranges by Sat, 27 Dec 2025 07:45:24 GMT
